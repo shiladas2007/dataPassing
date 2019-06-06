@@ -6,7 +6,13 @@
     @upN="un = $event" :upLn="upLn"
     ></profile>
     <friend></friend>
-
+  <dailyW>
+    <p>top text</p>
+    <ul slot="sl1"><li>test1</li><li>test2</li><li>test3</li></ul>
+    <ul slot="sl2"><li>test6</li><li>test4</li><li>test5</li></ul>
+    <p>defalut text</p>
+    <div :slot="ot">test ot</div>
+  </dailyW>
     <app-footer></app-footer>
   </div>
 </template>
@@ -15,13 +21,14 @@
 import Footer from './components/footer.vue';
 import profile from './components/user/profile.vue';
 import friend from './components/user/friend.vue';
+import dailyW from './components/user/dailyw.vue';
 export default {
   name: 'app',
   data () {
     return {
      un:'shila', ln:'das',age:20, parents:{
        mother:"mot",father:"fat"
-     }
+     },ot:''
     }
   },
   methods: {
@@ -31,8 +38,13 @@ export default {
   },
 
     components : {
-      'app-footer':Footer,profile, friend
-    }
+      'app-footer':Footer,profile, friend, dailyW
+    },
+    created() {
+      setTimeout(()=>{
+        this.ot='other';
+      },3000)
+    },
 }
 </script>
 
